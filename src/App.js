@@ -97,11 +97,11 @@ console.log(this.state.form);
     <table className="table ">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Email</th>
-          <th>Puesto</th>
+          <th className="color1">ID</th>
+          <th className="color2">Nombre</th>
+          <th className="color3">Apellido</th>
+          <th className="color4">Email</th>
+          <th className="color5">Puesto</th>
         </tr>
       </thead>
       <tbody>
