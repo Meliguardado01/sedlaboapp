@@ -12,8 +12,8 @@ const url="https://localhost:44302/api/empresas/";
 class App extends Component {
 state={
   data:[],
-  modalInsertar: true,
-  modalEliminar: true,
+  modalInsertar: false,
+  modalEliminar: false,
   form:{
     id: '',
     nombre: '',
@@ -113,7 +113,7 @@ console.log(this.state.form);
           <td>{empresa.pais}</td>
           <td>{new Intl.NumberFormat("en-EN").format(empresa.capital_bursatil)}</td>
           <td>
-                <button className="btn btn-primary" onClick={()=>{this.seleccionarEmpresa(empresa); this.modalInsertar({modalInsertar: true})}}><FontAwesomeIcon icon={faEdit}/></button>
+                <button className="btn btn-primary" onClick={()=>{this.seleccionarEmpresa(empresa); this.modalInsertar()}}><FontAwesomeIcon icon={faEdit}/></button>
                 {"   "}
                 <button className="btn btn-danger" onClick={()=>{this.seleccionarEmpresa(empresa); this.setState({modalEliminar: true})}}><FontAwesomeIcon icon={faTrashAlt}/></button>
                 </td>
@@ -137,19 +137,18 @@ console.log(this.state.form);
                     <label htmlFor="nombre">Nombre</label>
                     <input className="form-control" type="text" name="nombre" id="nombre" onChange={this.handleChange} value={form?form.nombre: ''}/>
                     <br />
-                    <label htmlFor="nombre">País</label>
+                    <label htmlFor="nombre">Apellido</label>
                     <input className="form-control" type="text" name="pais" id="pais" onChange={this.handleChange} value={form?form.pais: ''}/>
                     <br />
-                    <label htmlFor="capital_bursatil">Capital Bursatil</label>
+                    <label htmlFor="capital_bursatil">Email</label>
                     <input className="form-control" type="text" name="capital_bursatil" id="capital_bursatil" onChange={this.handleChange} value={form?form.capital_bursatil:''}/>
                   </div>
                 </ModalBody>
 
                 <ModalFooter>
                   {this.state.tipoModal=='insertar'?
-                    <button className="btn btn-success" onClick={()=>this.peticionPost()}>
-                    Insertar
-                  </button>: <button className="btn btn-primary" onClick={()=>this.peticionPut()}>
+                    <button className="btn btn-success" onClick={()=>this.modalInsertar()}>Insertar</button>
+                    : <button className="btn btn-primary" onClick={()=>this.peticionPut()}>
                     Actualizar
                   </button>
   }
@@ -157,10 +156,10 @@ console.log(this.state.form);
                 </ModalFooter>
           </Modal>
 
-
+          
           <Modal isOpen={this.state.modalEliminar}>
             <ModalBody>
-               Estás seguro que deseas eliminar a la empresa {form && form.nombre}
+               Estás seguro que deseas despedir al empleado? {form && form.nombre}
             </ModalBody>
             <ModalFooter>
               <button className="btn btn-danger" onClick={()=>this.peticionDelete()}>Sí</button>
