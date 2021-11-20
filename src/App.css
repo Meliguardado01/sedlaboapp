@@ -29,6 +29,26 @@
   color: #61dafb;
 }
 
+.color1{
+  background-color: rgb(250, 95, 204);
+}
+
+.color2{
+  background-color: rgb(99, 212, 146);
+}
+
+.color3{
+  background-color: rgb(128, 195, 240);
+}
+
+.color4{
+  background-color: rgb(245, 238, 148);
+}
+
+.color5{
+  background-color: rgb(255, 148, 255);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
