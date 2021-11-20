@@ -12,8 +12,8 @@ const url="https://localhost:44302/api/empresas/";
 class App extends Component {
 state={
   data:[],
-  modalInsertar: false,
-  modalEliminar: false,
+  modalInsertar: true,
+  modalEliminar: true,
   form:{
     id: '',
     nombre: '',
@@ -92,16 +92,16 @@ console.log(this.state.form);
   return (
     <div className="App">
     <br /><br /><br />
-  <button className="btn btn-success" onClick={()=>{this.setState({form: null, tipoModal: 'insertar'}); this.modalInsertar()}}>Agregar Empresa</button>
+  <button className="btn btn-success" onClick={()=>{this.setState({form: null, tipoModal: 'insertar'}); this.modalInsertar()}}>Agregar Empleado</button>
   <br /><br />
     <table className="table ">
       <thead>
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>País</th>
-          <th>Capital Bursatil (en millones de USD)</th>
-          <th>Acciones</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Puesto</th>
         </tr>
       </thead>
       <tbody>
@@ -113,7 +113,7 @@ console.log(this.state.form);
           <td>{empresa.pais}</td>
           <td>{new Intl.NumberFormat("en-EN").format(empresa.capital_bursatil)}</td>
           <td>
-                <button className="btn btn-primary" onClick={()=>{this.seleccionarEmpresa(empresa); this.modalInsertar()}}><FontAwesomeIcon icon={faEdit}/></button>
+                <button className="btn btn-primary" onClick={()=>{this.seleccionarEmpresa(empresa); this.modalInsertar({modalInsertar: true})}}><FontAwesomeIcon icon={faEdit}/></button>
                 {"   "}
                 <button className="btn btn-danger" onClick={()=>{this.seleccionarEmpresa(empresa); this.setState({modalEliminar: true})}}><FontAwesomeIcon icon={faTrashAlt}/></button>
                 </td>
